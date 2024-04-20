@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: orcamento
+    name: your_django_app_name
     buildCommand: "./build.sh"
     env: python
-    startCommand: "gunicorn orcamento.wsgi:application"
+    startCommand: "gunicorn your_django_app_name.wsgi:application"
