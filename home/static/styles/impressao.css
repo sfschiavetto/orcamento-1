@@ -1,0 +1,20 @@
+td {
+    text-align: center;
+}
+th  {
+    text-align: center; /* Alinhamento do texto à esquerda */
+    background-color: #d4d4d4; /* Cor de fundo para cabeçalhos */
+}
+h3 {
+    text-align: center;
+}
+@media print {
+    .btn-imprimir {
+        display: none; /* Oculta o botão durante a impressão */
+    }
+}
+.imprimir {
+    margin-top: 20px;
+    display: flex;
+    justify-content: right; 
+}
