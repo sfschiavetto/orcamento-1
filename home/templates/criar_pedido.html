@@ -54,10 +54,16 @@
                             <div class="col">
                                 <label for="id_cpf_cnpj">CPF/CNPJ:</label>
                                 <input type="text" class="form-control" id="id_cpf_cnpj" name="cpf_cnpj" required>
+                                <div id="erro_cpf_cnpj" class="invalid-feedback" style="display: none;">
+                                    Corrija o CPF ou CNPJ.
+                                </div>    
                             </div>
                             <div class="col">
                                 <label for="id_contato">Contato:</label>
                                 <input type="text" class="form-control" id="id_contato" name="contato" required>
+                                <div id="erro_contato" class="invalid-feedback" style="display: none;">
+                                    O número de telefone deve ter 11 dígitos.
+                                </div>
                             </div>
                             <div class="col-12">
                                 <label for="id_nome_cliente">Nome do Cliente:</label>

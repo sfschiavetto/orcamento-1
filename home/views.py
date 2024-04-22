@@ -8,6 +8,7 @@ from .models import Pedido
 from .forms import PedidoForm
 from datetime import date
 from datetime import datetime
+from decimal import Decimal, InvalidOperation
 
 
 
@@ -57,15 +58,17 @@ def login(request):
     
     return render(request, 'login.html', {'form': form})
 
+
+
 @login_required
 def criar_pedido(request):
-    data_atual = datetime.now()  # Obter a data e hora atuais
+    data_atual = datetime.now().date()  # Obter a data atual (sem hora)
 
     if request.method == 'POST':
         form = PedidoForm(request.POST)
         if form.is_valid():
             # Processar a data do formulário e atribuir ao campo data_pedido
-            data_str = request.POST.get('data', None)
+            data_str = request.POST.get('data', None)  # Obter a data do formulário
             if data_str:
                 try:
                     data = date.fromisoformat(data_str)
@@ -74,13 +77,21 @@ def criar_pedido(request):
                     # Lidar com erro de formatação de data, se necessário
                     pass
 
+            # Processar o valor_unitario do formulário e atribuir ao campo valor_unitario
+            valor_str = form.cleaned_data['valor_unitario']
+            if valor_str:
+                try:
+                    valor = parse_decimal_br(valor_str)  # Função para converter valor monetário brasileiro em Decimal
+                    form.instance.valor_unitario = valor  # Atribuir valor_unitario ao campo valor_unitario
+                except ValueError:
+                    # Lidar com erro de conversão de valor
+                    pass
             form.save()
             return redirect('all')  # Redirecionar para página de sucesso após salvar
         
     else:
         form = PedidoForm()
-    print("Formulário válido antes de salvar:", form.is_valid())
-    print("Erros no formulário antes de salvar:", form.errors)
+
     # Criar o contexto com o formulário e a data atual
     context = {
         'form': form,
@@ -89,6 +100,21 @@ def criar_pedido(request):
 
     return render(request, 'criar_pedido.html', context)
 
+def parse_decimal_br(value):
+    """Função para converter valor monetário brasileiro em Decimal."""
+    try:
+        # Converter value para string se ainda não for uma string
+        if not isinstance(value, str):
+            value = str(value)
+        
+        # Remover caracteres não numéricos (exceto ponto e vírgula) e substituir vírgula por ponto
+        numeric_chars = [c for c in value if c.isdigit() or c == ',' or c == '.']
+        cleaned_value = ''.join(numeric_chars)
+        decimal_value = Decimal(cleaned_value.replace(',', '.'))
+        return decimal_value
+    except InvalidOperation:
+        raise ValueError("Valor monetário inválido")
+    
 @login_required
 def excluir_pedido(request, pedido_id):
     # Obter o pedido pelo ID

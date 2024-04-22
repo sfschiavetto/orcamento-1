@@ -1,3 +1,9 @@
+// Função para formatar o valor com duas casas decimais
+function formatarValorDecimal(valor) {
+    var valorFormatado = parseFloat(valor).toFixed(2);
+    return valorFormatado.replace('.', ',');
+}
+
 // Função para calcular e atualizar o valor total com base nos valores unitários e quantidades
 function atualizarValorTotal() {
     const inputsQuantidade = document.querySelectorAll('[name^="quantidade"]');
@@ -6,13 +12,13 @@ function atualizarValorTotal() {
 
     inputsQuantidade.forEach((inputQuantidade, index) => {
         const quantidade = parseInt(inputQuantidade.value) || 0;
-        const valorUnitario = parseFloat(inputsValorUnitario[index].value) || 0;
+        const valorUnitario = parseFloat(inputsValorUnitario[index].value.replace(',', '.')) || 0; // Substituir vírgula por ponto
         const subtotal = quantidade * valorUnitario;
         valorTotal += subtotal;
     });
 
     const valorTotalInput = document.getElementById('valor_total');
-    valorTotalInput.value = valorTotal.toFixed(2);
+    valorTotalInput.value = formatarValorDecimal(valorTotal);
 }
 
 // Adicionar event listener para calcular o valor total quando as quantidades ou valores unitários mudam
@@ -150,4 +156,28 @@ $(document).ready(function () {
             $('#criarPedidoForm').submit();
         }
     });
+});
+
+document.getElementById('id_contato').addEventListener('input', function() {
+    var input = this;
+    var erro_contato = document.getElementById('erro_contato');
+    if (input.value.length !== 11) {
+        input.classList.add('is-invalid');
+        erro_contato.style.display = 'block';
+    } else {
+        input.classList.remove('is-invalid');
+        erro_contato.style.display = 'none';
+    }
+});
+
+document.getElementById('id_cpf_cnpj').addEventListener('input', function() {
+    var input = this;
+    var erro_contato = document.getElementById('erro_cpf_cnpj');
+    if (input.value.length < 11 || input.value.length > 14) {
+        input.classList.add('is-invalid');
+        erro_contato.style.display = 'block';
+    } else {
+        input.classList.remove('is-invalid');
+        erro_contato.style.display = 'none';
+    }
 });

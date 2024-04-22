@@ -6,6 +6,7 @@
         <title>Pedido {{ pedido.id }}</title>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">   
         <link rel="stylesheet" href="{% static 'styles/impressao.css' %}">
+  
 
     </head>
      
@@ -23,10 +24,8 @@
             </header>
             <div>
                 <h3>ORCAMENTO N°:{{ data_atual }}-{{ pedido.id }}</h3> 
-                <h4>DADOS DO CLIENTE:</h4>
+                <h5>DADOS DO CLIENTE:</h5>
             </div>  
-
-            
             <p>
                 <span class="espacamento-itens"><strong>NOME:</strong> {{ pedido.nome_cliente|upper }}</span>
                 <span class="espacamento-itens"><strong>CPF/CNPJ:</strong> {{ pedido.cpf_cnpj }}</span>
