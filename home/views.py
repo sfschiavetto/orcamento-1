@@ -144,4 +144,3 @@ def imprimir_pedido(request, pedido_id):
     return render(request, 'impressao.html', context)
     # Exemplo simples: retornar uma mensagem de sucesso
     #return HttpResponse(f'O pedido {pedido_id} foi enviado para impressão com sucesso!')
-

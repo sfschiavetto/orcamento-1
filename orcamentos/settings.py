@@ -124,5 +124,3 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_URL = '/home/login'
 LOGOUT_REDIRECT_URL = '/home/login'
-
-ALLOWED_HOSTS = ['*']
