@@ -2,6 +2,9 @@
 from pathlib import Path
 import os
 
+#adm usuario:grafica 
+#senha: grafic@1305
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
