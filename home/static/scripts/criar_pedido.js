@@ -1,7 +1,7 @@
 // Função para formatar o valor com duas casas decimais
 function formatarValorDecimal(valor) {
     var valorFormatado = parseFloat(valor).toFixed(2);
-    return valorFormatado.replace('.', ',');
+    return valorFormatado.replace('.', '.');
 }
 
 // Função para calcular e atualizar o valor total com base nos valores unitários e quantidades
