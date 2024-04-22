@@ -1,23 +1,50 @@
-{% extends 'base.html' %}
-{% load static %}
+<!DOCTYPE html>
 {% load crispy_forms_tags %}
+{% load static %}
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'styles/login.css' %}">
+  </head>
+  <body>
 
-{% block content %}
+    <nav class="navbar navbar-expand-md navbar-light fixed-top"> 
+      <div>
+        <a href="/admin/">Area Administrativa</a>
+      </div>  
+    </nav>
 
-<div class="container-md">
-  <div class="row justify-content-center" style="display: flex">
-    <div class="col-md-4" style="display: flex" >
-      <div class="card" style="width: 26rem;">
-        <div class="card-header text-center" style="font-size: 24px;"><strong>Acessar</strong></div>
-        <div class="card-body">
-          <form method="post">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <button type="submit" class="btn btn-primary btn-block mt-3">Login</button>
-          </form>
+    <div class="titulo">
+      <img src="{% static 'image/abaco.png' %}" />
+    </div/>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header text-center"><strong>Acessar</strong></div>
+            <div class="card-body">
+              <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary btn-block mt-3">Login</button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-{% endblock %}
+    <footer class="footer fixed-bottom"> 
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+        <a class="text-body" target=blank href="https://github.com/phaleixo/orcamento">DRP10-PJI110-A2024S1-T002 (Projeto PI-1 Univesp 2024)</a>
+      </div>
+      <!-- Copyright -->
+    </footer> 
+
+    <!-- Adicione o link para o arquivo JavaScript do Bootstrap (opcional, se necessário) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
