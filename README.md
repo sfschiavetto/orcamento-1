@@ -28,6 +28,10 @@ git clone https://github.com/phaleixo/orcamento
 ```
 python -m venv .venv
 ```
+Ou se estiver usando linux pode ser necessario informar que é o python 3:
+```
+python3 -m venv .venv
+```
 Voce pode colocar o nome que preferir, neste caso eu coloquei  ".venv"
 
 4 - Ative o ambiente virtual:
