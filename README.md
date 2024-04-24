@@ -24,7 +24,11 @@ Para adaptar o aplicativo a suas necessidades:
 ```
 git clone https://github.com/phaleixo/orcamento
 ```
-3 - Crie o ambiente virtual:
+3 - Navegue até a pasta:
+```
+cd orcamento
+```
+4 - Crie o ambiente virtual:
 ```
 python -m venv .venv
 ```
@@ -34,7 +38,7 @@ python3 -m venv .venv
 ```
 Voce pode colocar o nome que preferir, neste caso eu coloquei  ".venv"
 
-4 - Ative o ambiente virtual:
+5 - Ative o ambiente virtual:
 Linux
 ```
 source .venv/bin/activate
@@ -44,10 +48,6 @@ Windows:
 .venv\Scripts\activate
 ```
 
-5 - Navegue até a pasta:
-```
-cd orcamento
-```
 6 - Instale os requerimentos:
 ```
 pip install -r requirements.txt
