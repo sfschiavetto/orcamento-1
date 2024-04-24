@@ -1,6 +1,21 @@
 Projeto PI 1 da turma 002 Cravinhos 2024
 
-Aplicativo simples para Orçamento.
+Aplicativo simples para Orçamento feito com Python 3.10.14
+
+Requerimentos:
+
+asgiref==3.8.1
+crispy-bootstrap4==2024.1
+Django==4.2.4
+django-crispy-forms==2.1
+djangorestframework==3.14.0
+gunicorn==22.0.0
+packaging==24.0
+pytz==2023.3
+sqlparse==0.4.4
+typing_extensions==4.11.0
+tzdata==2023.3
+
 
 Para adaptar o aplicativo a suas necessidades:
 
