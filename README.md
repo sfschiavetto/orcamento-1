@@ -1,31 +1,23 @@
 Projeto PI 1 da turma 002 Cravinhos 2024
 
+Aplicativo simples para Orçamento.
 
+Para adaptar o aplicativo a suas necessidades:
 
-Para adaptar o app a sua necessidade:
+1 - Abra o terminal(Linux) ou se estiver usando Windows o prompt de comando ou powershell
 
-1 - abra o terminal(Linux) ou se estiver usando Windows o prompt de comando ou powershell
-
-2 - clone o repositório:
+2 - Clone o repositório:
 ```
 git clone https://github.com/phaleixo/orcamento
 ```
-
-3 - navegue até a pasta 
-
+3 - Crie o ambiente virtual:
 ```
-cd pasta/onde/voce/salvou/orcamento
+python -m venv .venv
 ```
-4 - abra o vscode na pasta
+Voce pode colocar o nome que preferir, neste caso eu coloquei  ".venv"
 
-```
-code .
-```
-Ou abra o Vscode vá em Arquivo, Abrir pasta... e selecione a pasta "orcamentos" que foi baixada
-
-
-5 - acesse o ambiente virtual 
-Linux:
+4 - Ative o ambiente virtual:
+Linux
 ```
 source .venv/bin/activate
 ```
@@ -33,15 +25,25 @@ Windows:
 ```
 .venv\Scripts\activate
 ```
-
-Inicie o servidor
+5 - Instale os requerimentos:
+```
+pip install -r requirements.txt
+```
+6 - Navegue até a pasta:
+```
+cd orcamento
+```
+7 - Inicie o servidor
 ```
 python manage.py runserver
 ```
-Abra o seu navegador e coloque o Endereço:
+8 - Abra o seu navegador e coloque o Endereço:
 ```
 http://127.0.0.1:8000/
 ```
-divirta-se!!!
-
+9 - Se quiser adaptar ou melhor o aplicativo, abra o vscode na pasta:
+```
+code .
+```
+10 - Divirta-se!!!
 
