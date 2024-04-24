@@ -43,13 +43,14 @@ Windows:
 ```
 .venv\Scripts\activate
 ```
-5 - Instale os requerimentos:
-```
-pip install -r requirements.txt
-```
-6 - Navegue até a pasta:
+
+5 - Navegue até a pasta:
 ```
 cd orcamento
+```
+6 - Instale os requerimentos:
+```
+pip install -r requirements.txt
 ```
 7 - Inicie o servidor
 ```
