@@ -3,90 +3,72 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Pedido {{ pedido.id }}</title>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">   
-        <link rel="stylesheet" href="{% static 'styles/impressao.css' %}">
-  
-
     </head>
-     
-    <div class="container text-justify">
-        <body>
-            <header>
-                
-                <img src="{% static 'image/logo_grafica_small.png' %}" />
-                <p><strong>Endereço:</strong> Av. Independência, 389 - Vila Seixas, Ribeirão Preto - SP, 14020-010</p> 
-                <p><strong>Telefone:</strong> (16) 3101-5451</p>
-                <p id="dataAtual"></p>
-                
-                
-                
-            </header>
-            <div>
-                <h3>ORCAMENTO N°:{{ data_atual }}-{{ pedido.id }}</h3> 
-                <h5>DADOS DO CLIENTE:</h5>
-            </div>  
-            <p>
-                <span class="espacamento-itens"><strong>NOME:</strong> {{ pedido.nome_cliente|upper }}</span>
-                <span class="espacamento-itens"><strong>CPF/CNPJ:</strong> {{ pedido.cpf_cnpj }}</span>
-                <span class="espacamento-itens"><strong>CONTATO:</strong> {{ pedido.contato }}</span>
-                <span class="espacamento-itens"><strong>DATA DO PEDIDO:</strong> {{ pedido.data|upper }}</span>
-            </p>
+    
+    <body>
+        <header class="px-3">
             
-            <main>
-            
-                <table class="table table-bordered">
-                    
-                    <tbody>
-                        
-                        <tr >
-                            <th style="text-align: center;">Quant.</th>
-                            <th style="text-align: center;">Produtos</th>
-                            <th style="text-align: center;">Descrição do Impresso</th>
-                            <th style="text-align: center;">Valor Unitário</th>
-                            <th style="text-align: center;">Valor Subtotal</th>
-                            
-                        </tr>
-                        <tr>
-                            <td>{{ pedido.quantidade }}</td>
-                            <td>{{ pedido.produto }}</td>
-                            <td>{{ pedido.descricao_impresso }}</td>
-                            <td>R$ {{ pedido.valor_unitario }}</td>
-                            <td>R$ {{ pedido.valor_total }}</td>
-                        </tr>
-                        
-                       
-                        
-                        <tr>
-                            <th style="text-align: center;" colspan="5">Descrição do Pedido</th>
-                        </tr>        
-                        <tr >    
-                            <td  class="multiline" colspan="5" rowspan="3" style="text-align: left; width: 150px; height: 100px; border: 1px solid ##5a5a5a;">{{ pedido.descricao_pedido }}</td>
-                        </tr>
-                    </tbody>
-                    
-                    <tfoot >
-                        <tr> 
-                            <th colspan="4" style="text-align: right;">Total: </th>
-                            <th style="text-align: center;">R$ {{ pedido.valor_total }}</th>
-                        </tr>
-                    </tfoot>
-                </table>
-                <div class="imprimir">
-                     <button type="button" class="btn btn-primary btn-imprimir" onclick="window.print()">Imprimir / Salvar PDF</button>
-                </div>
-                 
-            </main>
-             
+            <img src="{% static 'image/logo_grafica_small.png' %}" />
+            <p> Av. Independência, 389 - Vila Seixas, Ribeirão Preto - SP, Cep:14020-010 <strong>Telefone:</strong> (16) 3101-5451</p>
+            <p class="col py-2 px-md-0" id="dataAtual"></p>
+        </header>
+        <div>
+            <h5 class="text-center col py-2 px-md-5">ORCAMENTO N°:{{ data_atual }}-{{ pedido.id }}</h5> 
+            <h5 class="text-center col py-3 px-md-0">Dados do Cliente:</h5>
+        </div>  
+        <p>
+            <span class="col py-2 px-md-0 text-nowrap"><strong>NOME:</strong> {{ pedido.nome_cliente|upper }}</span>
+            <span class="col py-2 px-md-3 text-nowrap"><strong>CPF/CNPJ:</strong> {{ pedido.cpf_cnpj }}</span>
+            <span class="col py-2 px-md-3 text-nowrap"><strong>TELEFONE:</strong> {{ pedido.contato }}</span>
+            <span class="col py-3 px-md-5 text-nowrap"><strong>DATA DO PEDIDO:</strong> {{ pedido.data|upper }}</span>
+        </p>
         
+        <table class="table table-bordered px-3">
             
-            <!-- Importar Bootstrap JavaScript (opcional) -->
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-            <script src="{% static 'scripts/impressao.js' %}"></script>
-
+            <tbody>
+                
+                <tr >
+                    <th class="text-center table-active">Quant.</th>
+                    <th class="text-center table-active">Produtos</th>
+                    <th class="text-center table-active">Descriçao Impresso</th>
+                    <th class="text-center table-active">Valor Unitário</th>
+                    <th class="text-center table-active">Valor Subtotal</th>
+                    
+                </tr>
+                <tr>
+                    <td class="text-center">{{ pedido.quantidade }}</td>
+                    <td class="text-center">{{ pedido.produto }}</td>
+                    <td class="text-center">{{ pedido.descricao_impresso }}</td>
+                    <td class="text-center">R$ {{ pedido.valor_unitario }}</td>
+                    <td class="text-center">R$ {{ pedido.valor_total }}</td>
+                </tr>
+                
+                <tr class="table table-bordered">
+                    <th class="text-center table-active" colspan="5">Descrição do Pedido</th>
+                </tr>        
+                <tr >    
+                    <td  class="multiline" colspan="5" rowspan="3">{{ pedido.descricao_pedido }}</td>
+                </tr>
+            </tbody>
             
-        </body> 
-    </div>
+            <tfoot class="table table-bordered" >
+                <tr> 
+                    <th class="text-right"colspan="4" >Total: </th>
+                    <th class="text-center">R$ {{ pedido.valor_total }}</th>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="float-right d-print-none">
+                <button type="button" class="btn btn-primary btn-imprimir" onclick="window.print()">Imprimir / Salvar PDF</button>
+        </div>
+         <!-- Importar Bootstrap JavaScript (opcional) -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="{% static 'scripts/impressao.js' %}"></script>
+    </body> 
+    
     
 </html>
