@@ -3,8 +3,8 @@ function exibirDataAtual() {
     var dataAtual = new Date();
 
     // Obter o dia, mês e ano da data atual
-    var dia = dataAtual.getDate();
-    var mes = dataAtual.getMonth() + 1; // O mês é baseado em zero (janeiro = 0), então adicionamos 1
+    var dia = ("0" + dataAtual.getDate()).slice(-2);
+    var mes = ("0" + (dataAtual.getMonth() + 1)).slice(-2); // O mês é baseado em zero (janeiro = 0), então adicionamos 1
     var ano = dataAtual.getFullYear();
 
     // Formatar a data como "DD/MM/AAAA" (por exemplo, "14/04/2024")

@@ -8,7 +8,7 @@
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">   
     </head>
     
-    <body>
+    <body class="px-3">
         <header class="px-3">
             
             <img src="{% static 'image/logo_grafica_small.png' %}" />
@@ -23,7 +23,7 @@
             <span class="col py-2 px-md-0 text-nowrap"><strong>NOME:</strong> {{ pedido.nome_cliente|upper }}</span>
             <span class="col py-2 px-md-3 text-nowrap"><strong>CPF/CNPJ:</strong> {{ pedido.cpf_cnpj }}</span>
             <span class="col py-2 px-md-3 text-nowrap"><strong>TELEFONE:</strong> {{ pedido.contato }}</span>
-            <span class="col py-3 px-md-5 text-nowrap"><strong>DATA DO PEDIDO:</strong> {{ pedido.data|upper }}</span>
+            <span class="col py-3 px-md-5 text-nowrap"><strong>DATA DO PEDIDO:</strong> {{ pedido.data|date:"d/m/Y" }}</span>
         </p>
         
         <table class="table table-bordered px-3">
