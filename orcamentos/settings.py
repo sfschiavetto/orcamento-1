@@ -1,7 +1,7 @@
 
 from pathlib import Path
 import os
-
+from django.contrib.messages import constants
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'home',
     'crispy_forms',
     "crispy_bootstrap4",
+    'produto',
 
 
 ]
@@ -123,3 +124,11 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_URL = '/home/login'
 LOGOUT_REDIRECT_URL = '/home/login'
+
+MESSAGE_TAGS = {
+    constants.DEBUG: 'alert-primary',
+    constants.ERROR: 'alert-danger',
+    constants.SUCCESS: 'alert-success',
+    constants.INFO: 'alert-info',
+    constants.WARNING: 'alert-warning',
+}

@@ -9,6 +9,7 @@ from .forms import PedidoForm
 from datetime import date
 from datetime import datetime
 from decimal import Decimal, InvalidOperation
+from produto import views
 
 
 
