@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 {% load crispy_forms_tags %}
 {% load static %}
 <html>
@@ -8,7 +9,7 @@
         <title>Cadastrar Produto</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     </head>
-    <body>
+    <body >
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="logo">
                 <img src="{% static 'image/logo_abaco.png' %}" alt="Logo">
@@ -36,42 +37,28 @@
                 </ul>
             </div>
         </nav>
-        <main>
-            {% if messages %}
-                {% for message in messages %}
-                    <section class="alert {{message.tags}}">
-                        {{message}}
+        {% if messages %}
+            {% for message in messages %}
+                <section class="alert {{message.tags}}">
+                    {{message}}
+                </section>
+            {% endfor %}
+        {% endif %}
+        <div class="d-flex justify-content-center align-items-start vh-100">
+            <div class="col-12 col-md-8 text-center">
+                <h2>Confirmação de Exclusão</h2>
+                <p>Você tem certeza que deseja excluir o produto?</p>
 
-                    </section>
-                {% endfor %}
-            {% endif %}
-            <div class="container">
-                <h1 class="mt-4">Produtos Cadastrados</h1>
-                <div class="row">
-                    {% for produto in produtos %}
-                        <div class="col-12 col-md-6 col-lg-4 mb-4">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ produto.nome }}</h5>
-                                    <p class="card-text">
-                                        <strong>Preço:</strong><span>R$: {{ produto.preco}}</span><br>
-                                        <strong>Promoção:</strong><span>R$: {{ produto.preco_promocional }}</span><br>
-                                        <strong>Tipo:</strong>{{ produto.tipo }}
-                                    </p>
-                                    <div>
-                                        <a href="{% url 'produto_cadastrado' %}" class="btn btn-secondary btn-sm">Abrir</a>
-                                        <a href="{% url 'editar_produto' produto.id %}" class="btn btn-primary btn-sm">Editar</a>
-                                        <a href="{% url 'deletar_produto' produto.id %}" class="btn btn-danger btn-sm">Excluir</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
+                    <a href="{% url 'listar_produtos' %}" class="btn btn-secondary">Cancelar</a>
+                </form>
             </div>
-        </main>
+        </div>
+        <!-- Integrando Bootstrap JavaScript (opcional, apenas se necessário para funcionalidades específicas) -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </body>
 </html>
+

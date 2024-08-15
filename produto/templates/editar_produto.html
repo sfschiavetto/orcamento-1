@@ -37,41 +37,43 @@
             </div>
         </nav>
         <main>
-            {% if messages %}
-                {% for message in messages %}
-                    <section class="alert {{message.tags}}">
-                        {{message}}
-
-                    </section>
-                {% endfor %}
-            {% endif %}
-            <div class="container">
-                <h1 class="mt-4">Produtos Cadastrados</h1>
-                <div class="row">
-                    {% for produto in produtos %}
-                        <div class="col-12 col-md-6 col-lg-4 mb-4">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ produto.nome }}</h5>
-                                    <p class="card-text">
-                                        <strong>Preço:</strong><span>R$: {{ produto.preco}}</span><br>
-                                        <strong>Promoção:</strong><span>R$: {{ produto.preco_promocional }}</span><br>
-                                        <strong>Tipo:</strong>{{ produto.tipo }}
-                                    </p>
-                                    <div>
-                                        <a href="{% url 'produto_cadastrado' %}" class="btn btn-secondary btn-sm">Abrir</a>
-                                        <a href="{% url 'editar_produto' produto.id %}" class="btn btn-primary btn-sm">Editar</a>
-                                        <a href="{% url 'deletar_produto' produto.id %}" class="btn btn-danger btn-sm">Excluir</a>
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <h1>Editar produto</h1>
+                        <div class="card-body">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="form-group col">
+                                    {% for field in form %}
+                                    <div class="form-group">
+                                        {{ field.label_tag }}
+                                        {% if field.field.choices %}  <!-- Verifica se o campo tem opções -->
+                                            <select name="{{ field.name }}" class="form-control">
+                                                {% for value, display_value in field.field.choices %}
+                                                    <option value="{{ value }}" {% if value == field.value %}selected{% endif %}>{{ display_value }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        {% else %}
+                                            <div>
+                                                {{field}}
+                                            </div>
+                                        {% endif %}
                                     </div>
+                                    {% endfor %}
+                                
+                                    <button type="submit" class="btn btn-warning">Salvar alterações</button>
+                                    <a href="{% url 'listar_produtos' %}" class="btn btn-secondary">Voltar</a>
                                 </div>
-                            </div>
+                            </form>
                         </div>
-                    {% endfor %}
+                    </div>
                 </div>
             </div>
         </main>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </body>
 </html>
+

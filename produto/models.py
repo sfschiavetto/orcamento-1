@@ -9,13 +9,21 @@ from django.utils.text import slugify
 
 # Create your models here.
 
-class Produtos(models.Model):
+class Produto(models.Model):
     nome = models.CharField(max_length=50)
     descricao_curta = models.TextField(max_length=255)
     descricao_longa = models.TextField()
     slug = models.SlugField(unique=True, blank=True, null=True) # a ideia é utilizar o slug para gerar as URLs e listar os produtos depois
     preco = models.DecimalField(max_digits=10, decimal_places=2)
     preco_promocional = models.DecimalField(max_digits=10, decimal_places=2)
+    tipo = models.CharField(
+        default= 'V',
+        max_length=1,
+        choices=(
+            ('V', 'Variável'),
+            ('S', 'Simples'),
+        )
+    )
 
     # função para gerar e salvar slugs
     # aceita argumentos (*args) e palavras-chave (**kwargs) que possam ser passados ao método 'save' do Django 
@@ -29,7 +37,7 @@ class Produtos(models.Model):
 
 class Variacao(models.Model):
     # on_delete=models.CASCADE : faz com que quando se delete um produto, delete todas as variações (cadastrar variações será implementado depois)
-    produto = models.ForeignKey(Produtos, on_delete=models.CASCADE) 
+    produto = models.ForeignKey(Produto, on_delete=models.CASCADE) 
     nome = models.CharField(max_length=30, blank=True, null=True)
     preco = models.FloatField()
     preco_promocional = models.FloatField(default=0)

@@ -24,6 +24,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{% url 'criar_pedido' %}">Criar-Pedido</span></a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'listar_produtos' %}">Listar-Produtos</span></a>
+                </li>
                 <li class="nav-item">
                     <a href="{% url 'logout' %}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link" role="button">Deslogar</a>
                     <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
